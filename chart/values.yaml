@@ -28,3 +28,11 @@ volumes:
     local:
       path: ~
     capacity: 10Gi
+  mlflow:
+    local:
+      path: ~
+    capacity: 10Gi
+  elastic:
+    local:
+      path: ~
+    capacity: 10Gi

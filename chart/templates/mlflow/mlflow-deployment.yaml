@@ -47,9 +47,11 @@ spec:
           volumeMounts:
             - mountPath: /mnt/mlflow
               name: mlflow-storage
+              readOnly: False
       restartPolicy: Always
       volumes:
         - name: mlflow-storage
           persistentVolumeClaim:
             claimName: mlflow-storage
+            readOnly: False
 status: {}

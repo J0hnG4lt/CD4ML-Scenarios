@@ -56,9 +56,11 @@ spec:
           volumeMounts:
             - mountPath: /usr/share/elasticsearch/data
               name: data01
+              readOnly: False
       restartPolicy: Always
       volumes:
         - name: data01
           persistentVolumeClaim:
             claimName: data01
+            readOnly: False
 status: {}

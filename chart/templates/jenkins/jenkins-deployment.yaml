@@ -51,6 +51,7 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /run/secrets/jenkins-admin-password
+              subPath: jenkins-admin-password
               name: jenkins-admin-password
             - mountPath: /var/jenkins_home
               name: jenkins-home
