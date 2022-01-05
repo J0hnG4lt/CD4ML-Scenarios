@@ -1,6 +1,7 @@
 FROM python:3.7-slim-buster
 WORKDIR /usr/src/app
 
+RUN pip3 install --upgrade pip
 RUN pip install awscli boto3 mlflow==1.10.0
 EXPOSE 5000
 ENV MLFLOW_S3_ENDPOINT_URL ${MLFLOW_S3_ENDPOINT_URL}

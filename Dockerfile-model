@@ -11,6 +11,7 @@ RUN mkdir -p /app/cd4ml/
 WORKDIR /app/cd4ml/
 
 COPY requirements.txt requirements.txt
+RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 
 COPY cd4ml .
