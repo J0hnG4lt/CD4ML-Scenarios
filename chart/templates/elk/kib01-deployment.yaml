@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: kib01
+  name: kib01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: kib01
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/jenkins_nw: "true"
+        io.kompose.service: kib01
+    spec:
+      containers:
+        - env:
+            - name: ELASTICSEARCH_HOSTS
+              value: http://es01:9200
+            - name: ELASTICSEARCH_URL
+              value: http://es01:9200
+          image: docker.elastic.co/kibana/kibana:7.6.0
+          name: kib01
+          ports:
+            - containerPort: 5601
+          resources: {}
+      restartPolicy: Always
+status: {}

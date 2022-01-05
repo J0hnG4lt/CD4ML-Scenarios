@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: fluentd
+  name: fluentd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: fluentd
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/jenkins_nw: "true"
+        io.kompose.service: fluentd
+    spec:
+      containers:
+        - image: ericnaglertw/cd4ml-fluentd:1
+          name: fluentd
+          ports:
+            - containerPort: 24224
+          resources: {}
+          volumeMounts:
+            - mountPath: /fluentd/etc
+              name: fluentd-claim0
+      restartPolicy: Always
+      volumes:
+        - name: fluentd-claim0
+          persistentVolumeClaim:
+            claimName: fluentd-claim0
+status: {}
