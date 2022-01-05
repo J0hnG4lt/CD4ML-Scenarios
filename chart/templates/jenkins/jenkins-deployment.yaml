@@ -44,6 +44,7 @@ spec:
             - name: TENANT
               value: jenkins
           image: {{ .Values.containers.jenkins.image }}
+          imagePullPolicy: IfNotPresent
           name: jenkins
           ports:
             - containerPort: 8080
@@ -53,6 +54,7 @@ spec:
               name: jenkins-admin-password
             - mountPath: /var/jenkins_home
               name: jenkins-home
+              readOnly: False
       restartPolicy: Always
       volumes:
         - name: jenkins-admin-password
@@ -64,4 +66,5 @@ spec:
         - name: jenkins-home
           persistentVolumeClaim:
             claimName: jenkins-home
+            readOnly: False
 status: {}

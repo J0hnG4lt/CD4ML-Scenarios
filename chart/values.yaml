@@ -24,3 +24,7 @@ volumes:
     local:
       path: ~
     capacity: 10Gi
+  jenkins:
+    local:
+      path: ~
+    capacity: 10Gi
