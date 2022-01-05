@@ -27,12 +27,20 @@ spec:
     spec:
       containers:
         - env:
-            - name: ACCESS_KEY
             - name: FLUENTD_HOST
               value: fluentd
             - name: FLUENTD_PORT
               value: "24224"
+            - name: ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: MINIO_ACCESS_KEY
             - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: MINIO_SECRET_KEY
             - name: TENANT
               value: jenkins
           image: {{ .Values.containers.jenkins.image }}
