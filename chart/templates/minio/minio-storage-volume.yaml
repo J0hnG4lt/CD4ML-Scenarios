@@ -1,0 +1,20 @@
+{{- if and .Values.volumes.local -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  creationTimestamp: null
+  name: minio-storage
+  labels:
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  capacity:
+    storage: {{ .Values.volumes.minio.capacity }}
+  persistentVolumeReclaimPolicy: Retain
+  accessModes:
+  - ReadOnlyMany
+  hostPath:
+    path: {{ .Values.volumes.minio.local.path }}
+    type: ""
+  storageClassName: hostpath
+{{- end -}}

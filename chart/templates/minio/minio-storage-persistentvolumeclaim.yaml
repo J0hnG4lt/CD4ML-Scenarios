@@ -6,8 +6,11 @@ metadata:
     io.kompose.service: minio-storage
   name: minio-storage
 spec:
+  {{- if and .Values.volumes.local }}
+  storageClassName: hostpath
+  {{- end }}
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   resources:
     requests:
       storage: 100Mi

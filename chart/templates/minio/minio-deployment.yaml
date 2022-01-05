@@ -59,9 +59,11 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: minio-storage
+              readOnly: False
       restartPolicy: Always
       volumes:
         - name: minio-storage
           persistentVolumeClaim:
             claimName: minio-storage
+            readOnly: False
 status: {}
