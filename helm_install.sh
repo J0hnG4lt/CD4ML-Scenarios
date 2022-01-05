@@ -7,4 +7,6 @@ helm install \
     --set volumes.mlflow.local.path="$( pwd )/volumes/mlflow" \
     --set volumes.elastic.local.path="$( pwd )/volumes/elastic_data" \
     --set secrets.jenkins.jenkins_admin_password="my53cur3p455w.rd" \
+    --set secrets.minio.access_key="my53cur3p455w.rd" \
+    --set secrets.minio.secret_key="my53cur3p455w.rd" \
     cd4ml ./chart

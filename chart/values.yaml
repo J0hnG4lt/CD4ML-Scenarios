@@ -21,6 +21,9 @@ containers:
 secrets:
   jenkins:
     jenkins_admin_password: ~
+  minio:
+    access_key: ~
+    secret_key: ~
 
 volumes:
   local: true
