@@ -22,7 +22,7 @@ spec:
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
-        io.kompose.network/jenkins_nw: "true"
+        io.kompose.network/jenkins-nw: "true"
         io.kompose.service: dev
     spec:
       containers:
@@ -35,7 +35,7 @@ spec:
           env:
             - name: JUPYTER_ENABLE_LAB
               value: "yes"
-          image: jupyter/minimal-notebook:54462805efcb
+          image: {{ .Values.containers.jupyter.image }}
           name: dev
           ports:
             - containerPort: 8888

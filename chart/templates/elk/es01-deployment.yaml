@@ -22,7 +22,7 @@ spec:
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
-        io.kompose.network/jenkins_nw: "true"
+        io.kompose.network/jenkins-nw: "true"
         io.kompose.service: es01
     spec:
       containers:
@@ -41,7 +41,7 @@ spec:
               value: "9200"
             - name: node.name
               value: es01
-          image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+          image: {{ .Values.containers.elastic.image }}
           livenessProbe:
             exec:
               command:

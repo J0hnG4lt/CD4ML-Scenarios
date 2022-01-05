@@ -21,7 +21,7 @@ spec:
         kompose.version: 1.26.0 (40646f47)
       creationTimestamp: null
       labels:
-        io.kompose.network/jenkins_nw: "true"
+        io.kompose.network/jenkins-nw: "true"
         io.kompose.service: kib01
     spec:
       containers:
@@ -30,7 +30,7 @@ spec:
               value: http://es01:9200
             - name: ELASTICSEARCH_URL
               value: http://es01:9200
-          image: docker.elastic.co/kibana/kibana:7.6.0
+          image: {{ .Values.containers.kibana.image }}
           name: kib01
           ports:
             - containerPort: 5601

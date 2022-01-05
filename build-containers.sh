@@ -9,6 +9,8 @@ echo "Building MLFlow"
 docker build --rm -f Dockerfile-mlflow -t georvic/cd4ml-mlflow:1 .
 echo "Building Model Server"
 docker build --rm -f Dockerfile-model -t georvic/cd4ml-model-server:1 .
+echo "Building Welcome Server"
+docker build --rm -f Dockerfile-welcome -t georvic/cd4ml-welcome:1 .
 
 echo "Building Fluentd"
 pushd .
@@ -22,3 +24,4 @@ docker push georvic/cd4ml-build-master:2
 docker push georvic/cd4ml-mlflow:1
 docker push georvic/cd4ml-fluentd:1
 docker push georvic/cd4ml-model-server:1
+docker push georvic/cd4ml-welcome:1

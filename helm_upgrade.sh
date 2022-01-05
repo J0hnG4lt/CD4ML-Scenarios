@@ -1,0 +1,1 @@
+helm upgrade --install -f ./chart/values.yaml --namespace cd4ml cd4ml ./chart
