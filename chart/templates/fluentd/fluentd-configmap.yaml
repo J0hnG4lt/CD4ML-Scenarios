@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "fluentd-configmap"
+  creationTimestamp: null
+  labels:
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  fluent.conf: |-
+{{ tpl (.Files.Get "./files/fluentd/fluent.conf") . | indent 4 }}

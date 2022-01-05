@@ -32,11 +32,12 @@ spec:
             - containerPort: 24224
           resources: {}
           volumeMounts:
-            - mountPath: /fluentd/etc
+            - mountPath: /fluentd/etc/fluent.conf
               name: fluentd-claim0
+              subPath: fluent.conf
       restartPolicy: Always
       volumes:
         - name: fluentd-claim0
-          persistentVolumeClaim:
-            claimName: fluentd-claim0
+          configMap:
+            name: "fluentd-configmap"
 status: {}
